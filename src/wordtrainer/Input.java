@@ -16,6 +16,10 @@ public class Input {
 
     //TODO: add check, when the user wants to get a lesson with the number that doesn't exist
     //TODO: define behaviour when the user puts in the lesson number that already exists (edit or ask to put a new lesson number?) Where should we save lessonnumbers?
+
+    /**
+     * Erzeung eine txt-Datei, in der die wichtigen Informationen ueber eine Lektion gespeichert werden
+     */
     public static void writeLesson() {
         int lessonNumber = readLessonNumber();
         String filename = "Lesson" + lessonNumber + ".txt";
@@ -29,6 +33,11 @@ public class Input {
 
     }
 
+    /**
+     * Fragt den User nach der Nummer der Lektion, die er eingeben will und gibt diese zurueck
+     *
+     * @return
+     */
     public static int readLessonNumber() {
         Scanner scan = new Scanner(System.in);
         int lessonNumber = 0;
@@ -51,6 +60,11 @@ public class Input {
         return lessonNumber;
     }
 
+    /**
+     * Fragt den User nach dem Thema der Lektion, die er eingeben will und gibt es zurueck
+     *
+     * @return
+     */
     public static String readTopic() {
         Scanner scan = new Scanner(System.in);
         boolean flag = true;
@@ -67,6 +81,11 @@ public class Input {
         return topic;
     }
 
+    /**
+     * Bittet den user, die Vokabelpaare seiner Lektion einzugeben
+     *
+     * @param filename
+     */
     public static void readWordpairLines(String filename) {
 
         boolean flag = true;
@@ -91,12 +110,26 @@ public class Input {
         }
     }
 
+    /**
+     * liest eine Zeile der User-Eingabe ein und gibt diese zurueck
+     *
+     * @param scan
+     * @return
+     */
     public static String readLine(Scanner scan) {
         String line = scan.nextLine();
         return line;
     }
 
     //TODO: add String filename as a parameter to call it from the other function
+
+    /**
+     * Schreibt Vokabelpaare in eine Datei
+     *
+     * @param filename
+     * @param line1
+     * @param line2
+     */
     public static void writeWordpairLines(String filename, String line1, String line2) {
         File file = new File(filename);
         try (FileWriter fileWriter = new FileWriter(file, true);
@@ -109,6 +142,12 @@ public class Input {
         }
     }
 
+    /**
+     * Sorgt dafuer, dass am Ende einer geschriebenen Zeile ein Zeilenumbruch kommt
+     *
+     * @param printWriter
+     * @param line
+     */
     public static void writeLine(PrintWriter printWriter, String line) {
         printWriter.write(line + "\n");
     }
@@ -142,6 +181,11 @@ public class Input {
         return fileExists;
     }
 
+    /**
+     * findet eine bestimmte Datei und gibt sie zurueck
+     * @param file
+     * @return
+     */
     public static File findFile(String file) {
 
         String path = null;
