@@ -3,7 +3,7 @@ package wordtrainer;
 /**
  * Created by Nati on 16.04.2017.
  */
-public class Card {//implements Comparable{
+public class Card implements Comparable{
     private String wordLanguage1;
     private String wordLanguage2;
     //private int position;
@@ -50,16 +50,21 @@ public class Card {//implements Comparable{
     public void increaseCountOfCorrectAnswers(){
         countOfCorrectAnswers++;
     }
-    /*
-    @Override
-    public int compareTo(Object anotherCard){
-        (Card) anotherCard;
 
-        if((anotherCard.getWordLanguage1().equals(this.wordLanguage1)) && ((Card) anotherCard).getWordLanguage1().equals(this.wordLanguage1)){
+    @Override
+    public int compareTo(Object anotherObject){
+        Card anotherCard = (Card) anotherObject;
+
+        if((anotherCard.getWordLanguage1().equals(this.wordLanguage1)) && (anotherCard.getWordLanguage1().equals(this.wordLanguage1))){
             return 0;
         }else{
             return 1;
         }
     }
-    */
+
+    @Override
+    public String toString(){
+        return wordLanguage1 + ", " + wordLanguage2;
+    }
+
 }

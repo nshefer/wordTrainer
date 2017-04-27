@@ -1,8 +1,6 @@
 package wordtrainer;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Nati on 16.04.2017.
@@ -11,15 +9,15 @@ public class Lesson {
     private ArrayList<Card> cards;
     private int numberOfLesson;
     private String topic;
-    //Sorted??
-    private Map<String, ArrayList<String>> translations1;
-    //Sorted??
-    private Map<String, ArrayList<String>> translations2;
+    private Map<String, Set<String>> translations1;
+    private Map<String, Set<String>> translations2;
 
     public Lesson(int numberOfLesson, String topic) {
         cards = new ArrayList<>();
         this.numberOfLesson = numberOfLesson;
         this.topic = topic;
+        translations1 = new HashMap<>();
+        translations2 = new HashMap<>();
     }
 
     public ArrayList<Card> getCards() {
@@ -34,11 +32,10 @@ public class Lesson {
         return topic;
     }
 
-    public Map<String, ArrayList<String>> getTranslations1() {
-        return translations1;
-    }
 
-    public Map<String, ArrayList<String>> getGetTranslations2() {
+    public Map<String, Set<String>> getTranslations1() {return translations1;}
+
+    public Map<String, Set<String>> getTranslations2() {
         return translations2;
     }
 
@@ -57,6 +54,66 @@ public class Lesson {
     public void shuffle() {
         Collections.shuffle(cards);
     }
+
+
+
+    public void setTranslations1(){
+
+        String key = "";
+        String translation = "";
+        Set<String> value = new HashSet<>();
+
+        for (Card card : cards){
+            key = card.getWordLanguage1();
+            translation = card.getWordLanguage2();
+
+            if(!translations1.isEmpty()) {
+
+                if (translations1.containsKey(key)) {
+                    value = translations1.get(key);
+                } else {
+                    value = new HashSet<>();
+                }
+
+            }else{
+                value = new HashSet<>();
+            }
+
+            value.add(translation);
+            translations1.put(key, value);
+        }
+    }
+
+    public void setTranslations2(){
+
+        String key = "";
+        String translation = "";
+        Set<String> value = new HashSet<>();
+
+        for (Card card : cards){
+            key = card.getWordLanguage2();
+            translation = card.getWordLanguage1();
+
+            if(!translations2.isEmpty()) {
+
+                if (translations2.containsKey(key)) {
+                    value = translations2.get(key);
+                } else {
+                    value = new HashSet<>();
+                }
+
+            }else{
+                value = new HashSet<>();
+            }
+
+            value.add(translation);
+            translations2.put(key, value);
+        }
+    }
+
+
+
+
 
 }
 
