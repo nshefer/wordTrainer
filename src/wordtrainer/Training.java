@@ -41,7 +41,7 @@ public class Training {
 
             br.readLine(); //da in der ersten Zeile die Lektionsnr steht
             topic = br.readLine();
-            lesson.setTopic("topic");
+            lesson.setTopic(topic);
 
             word1 = br.readLine();
 
@@ -99,7 +99,6 @@ public class Training {
         String word;
         Set<String> answerSet = convertToSet(answer);
         Set<String> correctAnswers;
-        boolean correct = false;
 
         if(language == 1) {
             word = card.getWordLanguage1();
@@ -128,12 +127,12 @@ public class Training {
 
     public Set<String> convertToSet(String answer){
 
-        Set<String> result = new HashSet<String>();
-        answer.replace(" ", "");
+        Set<String> result = new HashSet<>();
         String[] answerArray = answer.split(",");
 
         for(int i=0; i < answerArray.length; i++){
-            result.add(answerArray[i]);
+            String s = answerArray[i].trim();
+            result.add(s);
         }
 
         return result;
