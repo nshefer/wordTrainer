@@ -12,16 +12,22 @@ import java.util.Set;
  */
 public class Training {
 
+    /**
+     * Fragt die Vokabeln in einer zufaelligen Reihenfolge ab
+     * @param numberOfLesson
+     */
     public void practiceRandomly(int numberOfLesson){
 
         Lesson lesson = readLesson(numberOfLesson);
         lesson.shuffle();
-        lesson.setTranslations1();
-        lesson.setTranslations2();
 
         askAndCorrect(lesson);
     }
 
+    /**
+     * Fragt die Vokabeln in Eingabereihenfolge ab
+     * @param numberOfLesson
+     */
     public void practiceOrdered(int numberOfLesson){
 
         Lesson lesson = readLesson(numberOfLesson);
@@ -31,7 +37,12 @@ public class Training {
         askAndCorrect(lesson);
     }
 
-    public Lesson readLesson(int numberOfLesson){
+    /**
+     * Liest Vokabeln ein, die zuvor in einer txt-Datein gespeichert wurden und gibt eine Instanz von Lesson zurueck
+     * @param numberOfLesson
+     * @return
+     */
+    private Lesson readLesson(int numberOfLesson){
 
         Lesson lesson = new Lesson(numberOfLesson, "");
         String topic;
@@ -45,7 +56,7 @@ public class Training {
         fileName = "Lesson" + numberOfLesson + ".txt";
         file = new File(fileName);
 
-        //reading in topic and cards
+        //topic and cards werden eingelesen
         try(FileReader fr = new FileReader(file); BufferedReader br= new BufferedReader(fr)){
 
             br.readLine(); //da in der ersten Zeile die Lektionsnr steht
@@ -67,24 +78,38 @@ public class Training {
             ioEx.printStackTrace();
         }
 
+        lesson.setTranslations1();
+        lesson.setTranslations2();
+
         return lesson;
     }
 
-    public void askAndCorrect(Lesson lesson){
+    /**
+     * Fragt alle Vokabeln einer Lektion ab und gibt dem User eine Rueckmeldung, ob seine Antwort korrekt ist.
+     * @param lesson
+     */
+    private void askAndCorrect(Lesson lesson){
         Scanner scan = new Scanner(System.in);
         String answer;
         int language;
 
         for(Card card : lesson.getCards()){
             language = (int)(Math.random()*2.0 + 1.0);
-            askRandomly(card, language, lesson);
+            ask(card, language, lesson);
             answer = scan.nextLine();
             check(card, answer,language, lesson);
         }
 
     }
 
-    public void askRandomly(Card card, int language, Lesson lesson){
+    /**
+     * Fragt nach dem Wort in der Sprache auf der Karteikarte in der Lektion
+     *
+     * @param card
+     * @param language
+     * @param lesson
+     */
+    private void ask(Card card, int language, Lesson lesson){
 
         String word;
         int freq;
@@ -94,17 +119,26 @@ public class Training {
             translations  = lesson.getTranslations1();
             word = card.getWordLanguage1();
             freq = translations.get(word).size();
-            System.out.println(word + " (" + freq + ")");
+            System.out.println("Sprache 1: " + word + " (" + freq + ")");
         }else{
             translations  = lesson.getTranslations2();
             word = card.getWordLanguage2();
             freq = translations.get(word).size();
-            System.out.println(word + " (" + freq + ")");
+            System.out.println("Sprache 2: " + word + " (" + freq + ")");
         }
     }
 
 
-    public void check(Card card, String answer, int language, Lesson lesson){
+    /**
+     * Prueft, ob die eingegebenen User-Antworten eine Teilmenge der richtigen Uebersetzung bilden und gibt dem User Rueckmeldung.
+     * Falls die Antwort falsch war, wird die Karteikarte als Vokabelpaar in Lektion 0 eingefuegt
+     *
+     * @param card
+     * @param answer
+     * @param language
+     * @param lesson
+     */
+    private void check(Card card, String answer, int language, Lesson lesson){
         String word;
         Set<String> answerSet = convertToSet(answer);
         Set<String> correctAnswers;
@@ -133,8 +167,13 @@ public class Training {
         }
     }
 
-
-    public Set<String> convertToSet(String answer){
+    /**
+     * Konvertiert die User-Antwort (String) zu einem Hash-Set, damit sie mit den richtigen Uebersetzungen besser verglichen werden koennen.
+     *
+     * @param answer
+     * @return
+     */
+    private Set<String> convertToSet(String answer){
 
         Set<String> result = new HashSet<>();
         String[] answerArray = answer.split(",");
@@ -147,6 +186,11 @@ public class Training {
         return result;
     }
 
+    /**
+     * fuegt eine Karteikarte als Vokabelpaar in Lektion 0 ein
+     *
+     * @param card
+     */
     private void addToLesson0(Card card){
 
         String filename = "Lesson0";
