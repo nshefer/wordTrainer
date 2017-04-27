@@ -18,7 +18,7 @@ public class Input {
     //TODO: define behaviour when the user puts in the lesson number that already exists (edit or ask to put a new lesson number?) Where should we save lessonnumbers?
     public static void writeLesson() {
         int lessonNumber = readLessonNumber();
-        String filename = "Lesson" + lessonNumber;
+        String filename = "Lesson" + lessonNumber + ".txt";
         if (checkIfFileExists(filename)){
             readWordpairLines(filename);
         } else {

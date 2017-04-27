@@ -7,7 +7,10 @@ public class WordTrainer {
 
     public static void main(String[] args){
 
-        MainMenu.start();
+        //MainMenu.start();
+
+        Training training = new Training();
+        training.practice(3);
 
 
 
