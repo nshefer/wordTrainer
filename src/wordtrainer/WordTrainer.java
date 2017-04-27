@@ -9,8 +9,8 @@ public class WordTrainer {
 
         //MainMenu.start();
 
-        Training training = new Training();
-        training.practice(3);
+        //Training training = new Training();
+        //training.practice(3);
 
 
 

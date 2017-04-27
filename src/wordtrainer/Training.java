@@ -12,10 +12,19 @@ import java.util.Set;
  */
 public class Training {
 
-    public void practice(int numberOfLesson){
+    public void practiceRandomly(int numberOfLesson){
 
         Lesson lesson = readLesson(numberOfLesson);
         lesson.shuffle();
+        lesson.setTranslations1();
+        lesson.setTranslations2();
+
+        askAndCorrect(lesson);
+    }
+
+    public void practiceOrdered(int numberOfLesson){
+
+        Lesson lesson = readLesson(numberOfLesson);
         lesson.setTranslations1();
         lesson.setTranslations2();
 
