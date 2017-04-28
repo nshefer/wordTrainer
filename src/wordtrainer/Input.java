@@ -10,12 +10,9 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 /**
- * Created by Nati on 16.04.2017.
+ * Created by Baerbel Hanle and Natalia Shefer on 16.04.2017.
  */
 public class Input {
-
-    //TODO: add check, when the user wants to get a lesson with the number that doesn't exist
-    //TODO: define behaviour when the user puts in the lesson number that already exists (edit or ask to put a new lesson number?) Where should we save lessonnumbers?
 
     /**
      * Erzeung eine txt-Datei, in der die wichtigen Informationen ueber eine Lektion gespeichert werden
@@ -121,8 +118,6 @@ public class Input {
         return line;
     }
 
-    //TODO: add String filename as a parameter to call it from the other function
-
     /**
      * Schreibt Vokabelpaare in eine Datei
      *
@@ -153,9 +148,9 @@ public class Input {
     }
 
     /**
-     * Checks if the given file (only name and extension, e.g. "file.txt" needed) exists in the project directory.
-     * @param file filename with extension, path not needed
-     * @return
+     * Ueberprueft ob der File existiert in Projekt Directory.
+     * @param file Filename mit Extension, der Pfad braucht man nicht
+     * @return true or false
      */
     public static boolean checkIfFileExists(String file) {
         boolean fileExists=false;
@@ -207,9 +202,9 @@ public class Input {
     }
 
     /**
-     * Deletes a file in project folder with given name.
-     * It's important to put a file extension! E.g. "fileToBeDeleted.txt".
-     * @param filename the name of the file to be deleted with extension, path not needed
+     * Loescht ein File in Projekt Foldet mit gegebenem Namen.
+     * Es ist wichtig Fileextension anzugeben. Z.B. "fileToBeDeleted.txt".
+     * @param filename Name der File, das geloescht werden woll, den Pfad des Files braucht man nicht.
      */
     public static void deleteLesson(String filename){
         Path path=null;

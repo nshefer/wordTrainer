@@ -8,7 +8,7 @@ import java.util.Set;
 
 
 /**
- * Created by Bärbel on 19.04.2017.
+ * Created by Baerbel Hanle and Natalia Shefer on 16.04.2017.
  */
 public class Training {
 

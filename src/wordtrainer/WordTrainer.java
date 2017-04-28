@@ -1,7 +1,7 @@
 package wordtrainer;
 
 /**
- * Created by Nati on 16.04.2017.
+ * Created by Baerbel Hanle and Natalia Shefer on 16.04.2017.
  */
 public class WordTrainer {
 
