@@ -193,7 +193,7 @@ public class Training {
      */
     private void addToLesson0(Card card){
 
-        String filename = "Lesson0";
+        String filename = "Lesson0.txt";
         String line1 = card.getWordLanguage1();
         String line2 = card.getWordLanguage2();
 
