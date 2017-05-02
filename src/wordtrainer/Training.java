@@ -14,9 +14,10 @@ public class Training {
 
     /**
      * Fragt die Vokabeln in einer zufaelligen Reihenfolge ab
+     *
      * @param numberOfLesson
      */
-    public void practiceRandomly(int numberOfLesson){
+    public void practiceRandomly(int numberOfLesson) {
 
         Lesson lesson = readLesson(numberOfLesson);
         lesson.shuffle();
@@ -26,9 +27,10 @@ public class Training {
 
     /**
      * Fragt die Vokabeln in Eingabereihenfolge ab
+     *
      * @param numberOfLesson
      */
-    public void practiceOrdered(int numberOfLesson){
+    public void practiceOrdered(int numberOfLesson) {
 
         Lesson lesson = readLesson(numberOfLesson);
         lesson.setTranslations1();
@@ -39,10 +41,11 @@ public class Training {
 
     /**
      * Liest Vokabeln ein, die zuvor in einer txt-Datein gespeichert wurden und gibt eine Instanz von Lesson zurueck
+     *
      * @param numberOfLesson
      * @return
      */
-    private Lesson readLesson(int numberOfLesson){
+    private Lesson readLesson(int numberOfLesson) {
 
         Lesson lesson = new Lesson(numberOfLesson, "");
         String topic;
@@ -57,7 +60,7 @@ public class Training {
         file = new File(fileName);
 
         //topic and cards werden eingelesen
-        try(FileReader fr = new FileReader(file); BufferedReader br= new BufferedReader(fr)){
+        try (FileReader fr = new FileReader(file); BufferedReader br = new BufferedReader(fr)) {
 
             br.readLine(); //da in der ersten Zeile die Lektionsnr steht
             topic = br.readLine();
@@ -65,16 +68,16 @@ public class Training {
 
             word1 = br.readLine();
 
-            while(word1 != null){
+            while (word1 != null) {
                 word2 = br.readLine();
                 card = new Card(word1, word2);
                 word1 = br.readLine();
                 lesson.addCard(card);
             }
 
-        }catch(FileNotFoundException fnfEx) {
+        } catch (FileNotFoundException fnfEx) {
             fnfEx.printStackTrace();
-        }catch(IOException ioEx){
+        } catch (IOException ioEx) {
             ioEx.printStackTrace();
         }
 
@@ -86,18 +89,19 @@ public class Training {
 
     /**
      * Fragt alle Vokabeln einer Lektion ab und gibt dem User eine Rueckmeldung, ob seine Antwort korrekt ist.
+     *
      * @param lesson
      */
-    private void askAndCorrect(Lesson lesson){
+    private void askAndCorrect(Lesson lesson) {
         Scanner scan = new Scanner(System.in);
         String answer;
         int language;
 
-        for(Card card : lesson.getCards()){
-            language = (int)(Math.random()*2.0 + 1.0);
+        for (Card card : lesson.getCards()) {
+            language = (int) (Math.random() * 2.0 + 1.0);
             ask(card, language, lesson);
             answer = scan.nextLine();
-            check(card, answer,language, lesson);
+            check(card, answer, language, lesson);
         }
 
     }
@@ -109,19 +113,19 @@ public class Training {
      * @param language
      * @param lesson
      */
-    private void ask(Card card, int language, Lesson lesson){
+    private void ask(Card card, int language, Lesson lesson) {
 
         String word;
         int freq;
         Map<String, Set<String>> translations;
 
-        if (language == 1){
-            translations  = lesson.getTranslations1();
+        if (language == 1) {
+            translations = lesson.getTranslations1();
             word = card.getWordLanguage1();
             freq = translations.get(word).size();
             System.out.println("Sprache 1: " + word + " (" + freq + ")");
-        }else{
-            translations  = lesson.getTranslations2();
+        } else {
+            translations = lesson.getTranslations2();
             word = card.getWordLanguage2();
             freq = translations.get(word).size();
             System.out.println("Sprache 2: " + word + " (" + freq + ")");
@@ -138,27 +142,27 @@ public class Training {
      * @param language
      * @param lesson
      */
-    private void check(Card card, String answer, int language, Lesson lesson){
+    private void check(Card card, String answer, int language, Lesson lesson) {
         String word;
         Set<String> answerSet = convertToSet(answer);
         Set<String> correctAnswers;
 
-        if(language == 1) {
+        if (language == 1) {
             word = card.getWordLanguage1();
             correctAnswers = lesson.getTranslations1().get(word);
-        }else {
+        } else {
             word = card.getWordLanguage2();
             correctAnswers = lesson.getTranslations2().get(word);
         }
 
         if (correctAnswers.containsAll(answerSet)) {
-                System.out.println("Richtig!");
+            System.out.println("Richtig!");
         } else {
 
             System.out.println("Leider nicht ganz korrekt. Die richtige(n) Uebersetzung(en) waere(n) gewesen:");
             System.out.println();
 
-            for(String translation: correctAnswers){
+            for (String translation : correctAnswers) {
                 System.out.println(translation);
             }
 
@@ -173,12 +177,12 @@ public class Training {
      * @param answer
      * @return
      */
-    private Set<String> convertToSet(String answer){
+    private Set<String> convertToSet(String answer) {
 
         Set<String> result = new HashSet<>();
         String[] answerArray = answer.split(",");
 
-        for(int i=0; i < answerArray.length; i++){
+        for (int i = 0; i < answerArray.length; i++) {
             String s = answerArray[i].trim();
             result.add(s);
         }
@@ -191,13 +195,18 @@ public class Training {
      *
      * @param card
      */
-    private void addToLesson0(Card card){
+    private void addToLesson0(Card card) {
 
         String filename = "Lesson0.txt";
         String line1 = card.getWordLanguage1();
         String line2 = card.getWordLanguage2();
 
-        Input.writeWordpairLines(filename, line1, line2);
+        if (Input.checkIfFileExists("Lesson0.txt")) {
+            Input.writeWordpairLines(filename, line1, line2);
+        } else {
+            Input.writeWordpairLines("Lesson0.txt", "0", "Die oft vergessene Vokabeln");
+            Input.writeWordpairLines(filename, line1, line2);
+        }
 
     }
 

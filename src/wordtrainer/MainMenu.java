@@ -25,6 +25,7 @@ public class MainMenu {
         Scanner scanner = new Scanner(System.in);
         String userAnswer = scanner.nextLine();
         if (userAnswer.toUpperCase().equals("JA")){
+              System.out.println("ACHTUNG! Sie verlassen das Eingabemenu, wenn Sie statt Wort Enter drucken.");
              inputNewLessons();
         } else if (!userAnswer.toUpperCase().equals("NEIN")){
             System.out.println("Geben Sie bitte eindeutig \"ja\" oder \"nein\"");
