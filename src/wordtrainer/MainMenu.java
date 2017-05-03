@@ -172,7 +172,7 @@ public class MainMenu {
     }
 
     /**
-     * Fragt User, ob die Lktion 9 geloescht werden soll.
+     * Fragt User, ob die Lektion 0 geloescht werden soll.
      */
     private static void askIfUserWantsToDeleteLesson0(){
         System.out.println("Wollen Sie Lektion 0 loeschen?");
