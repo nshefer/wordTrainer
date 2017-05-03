@@ -143,8 +143,8 @@ public class MainMenu {
             askIfUserWantsToLearnMore();
             deleteLesson0IfExists();
         } else {
-            System.out.println("Geben Sie bitte eindeutig \"sortiert\" oder \"gemischt\".");
-            askIfUserWantsToLearnLesson();
+            System.out.println("Geben Sie bitte eindeutig \"sortiert\" oder \"durcheinander\".");
+            askInWhatOrderToShowCards(lessonNumber);
         }
     }
 
