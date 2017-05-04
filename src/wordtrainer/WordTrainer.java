@@ -7,6 +7,7 @@ public class WordTrainer {
 
     public static void main(String[] args){
         //TODO: check what happens if user wants to train Lesson0
+
         MainMenu.start();
 
     }

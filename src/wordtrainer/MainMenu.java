@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
+ * Start Programm.
  * Created by Baerbel Hanle and Natalia Shefer on 16.04.2017.
  */
 public class MainMenu {
     /**
-     * Start Programm.
+     * Zeigt an, ob die Person Training hatte oder nicht.
      */
-    private static boolean trained = false;
+    private boolean trained = false;
 
-    public static void start() {
+    public void start() {
         System.out.println("Willkommen zu Ihrem Vokabeltrainer!");
         startInputOfNewLessons();
         startTraining();
@@ -24,7 +25,7 @@ public class MainMenu {
     /**
      * Start Eingabe von neuen Lektionen.
      */
-    public static void startInputOfNewLessons(){
+    public void startInputOfNewLessons(){
         System.out.println("Wollen Sie jetzt eine neue Lektion eingeben?");
         Scanner scanner = new Scanner(System.in);
         String userAnswer = scanner.nextLine();
@@ -40,7 +41,7 @@ public class MainMenu {
     /**
      * Regelt die Eingabe der Neuen Lektionen.
      */
-    public static void inputNewLessons(){
+    public void inputNewLessons(){
         Input.writeLesson();
         System.out.println();
         welcomeMenuSwitcher();
@@ -49,7 +50,7 @@ public class MainMenu {
     /**
      * Macht Eingabe von neuen Lektionen weiter oder geht zu anderem Teil des Programms.
      */
-    private static void welcomeMenuSwitcher(){
+    private void welcomeMenuSwitcher(){
 
         int continueSwitcher=askIfUserWantsToContinue();
         if (continueSwitcher==0){
@@ -67,7 +68,7 @@ public class MainMenu {
      * Gibt zurueck 2 falls Eingabe inkorrekt ist.
      * @return Kode fuer menu switcher
      */
-    private static int askIfUserWantsToContinue(){
+    private int askIfUserWantsToContinue(){
         int switchCode=0;
         System.out.println("Moechten Sie noch eine Lektion aufschreiben?");
         Scanner scan = new Scanner(System.in);
@@ -87,14 +88,14 @@ public class MainMenu {
     /**
      * Start vom Vokabeltraining.
      */
-    private static void startTraining (){
+    private void startTraining (){
         askIfUserWantsToLearnLesson();
     }
 
     /**
      * Fragt, ob User Vokabeln lernen will.
      */
-    private static void askIfUserWantsToLearnLesson(){
+    private void askIfUserWantsToLearnLesson(){
         System.out.println("Wollen Sie jetzt Vokabeln lernen?");
         Scanner scanner = new Scanner(System.in);
         String userAnswer = scanner.nextLine();
@@ -110,7 +111,7 @@ public class MainMenu {
     /**
      * Fragt User nach der Lektionnummer.
      */
-    private static void askLessonNumber(){
+    private void askLessonNumber(){
         System.out.println("Geben Sie bitte die Lektionsnummer ein!");
         Scanner scanner = new Scanner(System.in);
         int lessonNumber=0;
@@ -133,7 +134,7 @@ public class MainMenu {
      * Fragt User, in welcher Reihenfolge die Karten sollen gezeigt werden.
      * @param lessonNumber Nummer der Lektion
      */
-    private static void askInWhatOrderToShowCards(int lessonNumber){
+    private void askInWhatOrderToShowCards(int lessonNumber){
         trained = true;
         Training training = new Training();
         System.out.println("Wollen Sie die Vokabeln sortiert oder durcheinander durchgehen?");
@@ -156,7 +157,7 @@ public class MainMenu {
     /**
      * Fragt ob User will noch eine Lektion lernen.
      */
-    private static void askIfUserWantsToLearnMore(){
+    private void askIfUserWantsToLearnMore(){
         System.out.println("Wollen Sie durch noch eine Lektion durchgehen?");
         Scanner scanner = new Scanner(System.in);
         String userAnswer = scanner.nextLine();
@@ -170,7 +171,7 @@ public class MainMenu {
     /**
      * Loescht Lektion 0, falls sie existiert.
      */
-    private static void deleteLesson0IfExists(){
+    private void deleteLesson0IfExists(){
         if (Input.checkIfFileExists("Lesson0.txt")){
             askIfUserWantsToDeleteLesson0();
         }
@@ -179,7 +180,7 @@ public class MainMenu {
     /**
      * Fragt User, ob die Lektion 0 geloescht werden soll.
      */
-    private static void askIfUserWantsToDeleteLesson0(){
+    private void askIfUserWantsToDeleteLesson0(){
         System.out.println("Wollen Sie Lektion 0 loeschen?");
         Scanner scanner = new Scanner(System.in);
         String userAnswer = scanner.nextLine();

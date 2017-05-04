@@ -19,8 +19,8 @@ public class Card{
      * Konstruktor fuer card.
      * uebergeben wird ein Vokabelpaar(Wort in Sprache 1 und in Sprache 2)
      *
-     * @param wordLanguage1
-     * @param wordLanguage2
+     * @param wordLanguage1 Sprache1
+     * @param wordLanguage2 Sprache2
      */
     public Card(String wordLanguage1, String wordLanguage2) {
 
