@@ -3,7 +3,7 @@ package wordtrainer;
 /**
  * Created by Baerbel Hanle and Natalia Shefer on 16.04.2017.
  */
-public class Card{//} implements Comparable{
+public class Card{
 
     /**
      * Wort in Sprache 1
@@ -31,7 +31,7 @@ public class Card{//} implements Comparable{
 
     /**
      * Getter fuer wordLanguage1
-     * @return
+     * @return wordLanguage1
      */
     public String getWordLanguage1(){
         return wordLanguage1;
@@ -40,7 +40,7 @@ public class Card{//} implements Comparable{
     /**
      * Getter fuer WordLanguage2
      *
-     * @return
+     * @return wordLanguage2
      */
     public String getWordLanguage2(){
         return wordLanguage2;

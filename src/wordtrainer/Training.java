@@ -15,7 +15,7 @@ public class Training {
     /**
      * Fragt die Vokabeln in einer zufaelligen Reihenfolge ab
      *
-     * @param numberOfLesson
+     * @param numberOfLesson - Nummer der Lektion, die geuebt wird
      */
     public void practiceRandomly(int numberOfLesson) {
 
@@ -28,7 +28,7 @@ public class Training {
     /**
      * Fragt die Vokabeln in Eingabereihenfolge ab
      *
-     * @param numberOfLesson
+     * @param numberOfLesson - Nummer der Lektion
      */
     public void practiceOrdered(int numberOfLesson) {
 
@@ -42,8 +42,8 @@ public class Training {
     /**
      * Liest Vokabeln ein, die zuvor in einer txt-Datein gespeichert wurden und gibt eine Instanz von Lesson zurueck
      *
-     * @param numberOfLesson
-     * @return
+     * @param numberOfLesson - Nummer der Lektion
+     * @return  - Lektion, die geuebt wird
      */
     private Lesson readLesson(int numberOfLesson) {
 
@@ -90,7 +90,7 @@ public class Training {
     /**
      * Fragt alle Vokabeln einer Lektion ab und gibt dem User eine Rueckmeldung, ob seine Antwort korrekt ist.
      *
-     * @param lesson
+     * @param lesson - Lektion, die geuebt wird
      */
     private void askAndCorrect(Lesson lesson) {
         Scanner scan = new Scanner(System.in);
@@ -109,9 +109,9 @@ public class Training {
     /**
      * Fragt nach dem Wort in der Sprache auf der Karteikarte in der Lektion
      *
-     * @param card
-     * @param language
-     * @param lesson
+     * @param card - Vokabelpaar
+     * @param language - 1 fuer Sprache 1, 2 fuer Sprache 2
+     * @param lesson - Lektion, die geuebt wird
      */
     private void ask(Card card, int language, Lesson lesson) {
 
@@ -137,10 +137,10 @@ public class Training {
      * Prueft, ob die eingegebenen User-Antworten eine Teilmenge der richtigen Uebersetzung bilden und gibt dem User Rueckmeldung.
      * Falls die Antwort falsch war, wird die Karteikarte als Vokabelpaar in Lektion 0 eingefuegt
      *
-     * @param card
-     * @param answer
-     * @param language
-     * @param lesson
+     * @param card - Vokabelpaar
+     * @param answer - Usereingabe (String)
+     * @param language - 1 fuer Sprache 1, 2 fuer Sprache 2
+     * @param lesson - Lektion, die geuebt wird
      */
     private void check(Card card, String answer, int language, Lesson lesson) {
         String word;
@@ -174,8 +174,8 @@ public class Training {
     /**
      * Konvertiert die User-Antwort (String) zu einem Hash-Set, damit sie mit den richtigen Uebersetzungen besser verglichen werden koennen.
      *
-     * @param answer
-     * @return
+     * @param answer - Usereingabe (String)
+     * @return Woerter der Antwort in einem Set
      */
     private Set<String> convertToSet(String answer) {
 
@@ -193,7 +193,7 @@ public class Training {
     /**
      * fuegt eine Karteikarte als Vokabelpaar in Lektion 0 ein
      *
-     * @param card
+     * @param card - Vokalbelpaar
      */
     private void addToLesson0(Card card) {
 

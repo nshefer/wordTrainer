@@ -33,7 +33,7 @@ public class Input {
     /**
      * Fragt den User nach der Nummer der Lektion, die er eingeben will und gibt diese zurueck
      *
-     * @return
+     * @return lessonNumber
      */
     public static int readLessonNumber() {
         Scanner scan = new Scanner(System.in);
@@ -60,7 +60,7 @@ public class Input {
     /**
      * Fragt den User nach dem Thema der Lektion, die er eingeben will und gibt es zurueck
      *
-     * @return
+     * @return topic
      */
     public static String readTopic() {
         Scanner scan = new Scanner(System.in);
@@ -81,7 +81,7 @@ public class Input {
     /**
      * Bittet den user, die Vokabelpaare seiner Lektion einzugeben
      *
-     * @param filename
+     * @param filename - Name der .txt-Datei, in der die Vokabelpaare gespeichert werden sollen
      */
     public static void readWordpairLines(String filename) {
 
@@ -111,7 +111,7 @@ public class Input {
      * liest eine Zeile der User-Eingabe ein und gibt diese zurueck
      *
      * @param scan
-     * @return
+     * @return line - Usereingabe
      */
     public static String readLine(Scanner scan) {
         String line = scan.nextLine();
@@ -121,9 +121,9 @@ public class Input {
     /**
      * Schreibt Vokabelpaare in eine Datei
      *
-     * @param filename
-     * @param line1
-     * @param line2
+     * @param filename - Name der .txt-Datei, in der die Vokabelpaare gespeichert werden sollen
+     * @param line1 - Wort in Sprache 1
+     * @param line2 - Wort in Sprache 2
      */
     public static void writeWordpairLines(String filename, String line1, String line2) {
         File file = new File(filename);
@@ -149,7 +149,7 @@ public class Input {
 
     /**
      * Ueberprueft ob der File existiert in Projekt Directory.
-     * @param file Filename mit Extension, der Pfad braucht man nicht
+     * @param file Filename mit Extension, den Pfad braucht man nicht
      * @return true or false
      */
     public static boolean checkIfFileExists(String file) {
@@ -178,8 +178,8 @@ public class Input {
 
     /**
      * findet eine bestimmte Datei und gibt sie zurueck
-     * @param file
-     * @return
+     * @param file - Datei nach der gesucht werden soll
+     * @return file - gefundene Datei
      */
     public static File findFile(String file) {
 
@@ -204,7 +204,7 @@ public class Input {
     /**
      * Loescht ein File in Projekt Foldet mit gegebenem Namen.
      * Es ist wichtig Fileextension anzugeben. Z.B. "fileToBeDeleted.txt".
-     * @param filename Name der File, das geloescht werden woll, den Pfad des Files braucht man nicht.
+     * @param filename Name des File, das geloescht werden woll, den Pfad des Files braucht man nicht.
      */
     public static void deleteLesson(String filename){
         Path path=null;
@@ -217,8 +217,5 @@ public class Input {
         }
 
     }
-
-
-
 
 }

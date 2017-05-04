@@ -38,8 +38,8 @@ public class Lesson {
      * bekommt das Thema und die Nummer der Lektion
      * cards wird als leere ArrayList initialisiert, translations1 und translations2 als leere HashMaps
      *
-     * @param numberOfLesson
-     * @param topic
+     * @param numberOfLesson - Nummer der Lektion
+     * @param topic - Thema der Lektion
      */
     public Lesson(int numberOfLesson, String topic) {
         cards = new ArrayList<>();
@@ -52,7 +52,7 @@ public class Lesson {
     /**
      * Getter fuer cards
      *
-     * @return
+     * @return cards - Liste der Vokabelpaare der Lektion
      */
     public ArrayList<Card> getCards() {
         return cards;
@@ -61,7 +61,7 @@ public class Lesson {
     /**
      * Getter fuer numberOfLesson
      *
-     * @return
+     * @return numberOfLesson - Nummer der Lektion
      */
     public int getNumberOfLesson() {
         return numberOfLesson;
@@ -69,7 +69,7 @@ public class Lesson {
 
     /**
      * Getter fuer topic
-     * @return
+     * @return topic - Thema der Lektion
      */
     public String getTopic() {
         return topic;
@@ -78,14 +78,14 @@ public class Lesson {
     /**
      * Getter fuer translations1
      *
-     * @return
+     * @return translations1 - Woerterbuch zur Uebersetzung von Sprache 1 in Sprache 2
      */
     public Map<String, Set<String>> getTranslations1() {return translations1;}
 
     /**
      * Getter fuer translations2
      *
-     * @return
+     * @return translations2 - Woerterbuch zur Uebersetzung von Sprache 2 in Sprache 1
      */
     public Map<String, Set<String>> getTranslations2() {
         return translations2;
@@ -94,7 +94,7 @@ public class Lesson {
     /**
      * Fuegt eine Karteikarte zu cards hinzu
      *
-     * @param card
+     * @param card - Vokabelpaar
      */
     public void addCard(Card card) {
         cards.add(card);
@@ -103,7 +103,7 @@ public class Lesson {
     /**
      * Setter fuer die Lektionsnummer
      *
-     * @param numberOfLesson
+     * @param numberOfLesson - Lektionsnummer
      */
     public void setNumberOfLesson(int numberOfLesson) {
         this.numberOfLesson = numberOfLesson;
@@ -112,7 +112,7 @@ public class Lesson {
     /**
      * Setter fuer topic
      *
-     * @param topic
+     * @param topic - Thema der Lektion
      */
     public void setTopic(String topic) {
         this.topic = topic;
