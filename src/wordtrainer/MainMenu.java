@@ -10,11 +10,15 @@ public class MainMenu {
     /**
      * Start Programm.
      */
+    private static boolean trained = false;
+
     public static void start() {
         System.out.println("Willkommen zu Ihrem Vokabeltrainer!");
         startInputOfNewLessons();
         startTraining();
-
+        if (trained){
+            deleteLesson0IfExists();
+        }
     }
 
     /**
@@ -130,6 +134,7 @@ public class MainMenu {
      * @param lessonNumber Nummer der Lektion
      */
     private static void askInWhatOrderToShowCards(int lessonNumber){
+        trained = true;
         Training training = new Training();
         System.out.println("Wollen Sie die Vokabeln sortiert oder durcheinander durchgehen?");
         Scanner scanner = new Scanner(System.in);
@@ -137,11 +142,11 @@ public class MainMenu {
         if (userAnswer.toUpperCase().equals("SORTIERT")){
             training.practiceOrdered(lessonNumber);
             askIfUserWantsToLearnMore();
-            deleteLesson0IfExists();
+            //deleteLesson0IfExists();
         } else if (userAnswer.toUpperCase().equals("DURCHEINANDER")){
             training.practiceRandomly(lessonNumber);
             askIfUserWantsToLearnMore();
-            deleteLesson0IfExists();
+            //deleteLesson0IfExists();
         } else {
             System.out.println("Geben Sie bitte eindeutig \"sortiert\" oder \"durcheinander\".");
             askInWhatOrderToShowCards(lessonNumber);
